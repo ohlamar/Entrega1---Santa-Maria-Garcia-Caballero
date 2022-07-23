@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block header %}
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Iniciar sesion/Crea tu cuenta</h1>
+    </div>
+</header>
+{% endblock header %}
+
+{% block body %}
+
+<p>
+    <form action={% url 'login' %} method="post">
+        {% csrf_token %}
+
+        <table>
+         {{form.as_table}}
+        </table>
+
+        <button>Login</button>
+        
+    </form>
+</p>
+{% endblock body %}

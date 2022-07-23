@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'creation',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\usuario\Desktop\Proyecto\Entrega1---Santa-Maria-Garcia-Caballero\templates'],
+        'DIRS': [r'C:\Users\crate\Desktop\Entrega1 - Agustin_Santa Maria, Caballero, Garcia\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

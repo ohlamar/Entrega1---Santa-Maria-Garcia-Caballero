@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Listado</title>
+{% endblock title %}
+
+{% block header %}
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Listado de personajes</h1>
+    </div>
+</header>
+{% endblock header %}
+
+{% block body %}
+
+
+<p>
+    <form action={% url 'listado' %} method='get'>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+
+<p>
+    {% if listas %}
+    
+   
+    <ul>
+        {% for persona in listas %}
+        <li>{{persona}}</li>
+        {%endfor%}
+
+    </ul>
+    {%else%}
+    No se encontraron datos.
+    {% endif %}
+</p>
+
+{% endblock body %}
