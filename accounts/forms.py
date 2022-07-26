@@ -7,10 +7,23 @@ class MyUserCreationForm(UserCreationForm):
     
     username = forms.CharField(label='Usuario' ,max_length=30)
     email = forms.EmailField()
-    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeti la contraseña', widget=forms.PasswordInput )
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repetir password', widget=forms.PasswordInput)
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2']
-        help_text = { key: '' for key in fields }
+        fields = ['username', 'email', 'password1', 'password2']
+        help_texts = { k: '' for k in fields }
+        
+         
+class MyUserEditForm(forms.Form):
+    
+    email = forms.EmailField(required=False)
+    first_name = forms.CharField(label='Nombre' ,max_length=30, required=False)
+    last_name = forms.CharField(label='Apellido' ,max_length=30, required=False)
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(label='Repetir password', widget=forms.PasswordInput, required=False)
+    
+    
+        
+        

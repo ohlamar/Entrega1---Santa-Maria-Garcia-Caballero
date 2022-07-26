@@ -29,6 +29,7 @@ def create(request):
     
     return render(request, 'creation/creation.html', {'form': form_per})
 
+
 def listado(request):
     
     nom_bus = request.GET.get('nombre')
@@ -40,26 +41,6 @@ def listado(request):
     form = Busqueda()    
     return render(request, 'creation/listado.html', {'listas': listas, 'form':form})
 
-# def editar(request, id):
-#     persona = Person.objects.get(id=id)
-    
-#     if request.method == 'POST':
-#         form = FormPerson(request.POST)
-#         if form.is_valid():
-#             persona.nombre = form.cleaned_data.get('nombre')
-#             persona.edad = form.cleaned_data.get('edad')
-#             persona.fecha = form.cleaned_data.get('fecha')
-#             persona.save()
-    
-#             return redirect('listado')
-        
-#         else:
-#             return render(request, 'edit.html', {'form': form})
-    
-#     form_person = FormPerson(initial={'nombre': persona.nombre, 'edad': persona.edad, 'fecha': persona.fecha})
-    
-#     return render(request, 'edit.html', {'form': form_person})
-    
 
 def edit(request, id):
     person = Person.objects.get(id=id)
@@ -87,6 +68,7 @@ def eliminar(request, id):
     persona.delete()
     
     return redirect('listado')
+
 
 def mostrar(request, id): 
     person = Person.objects.get(id=id)
