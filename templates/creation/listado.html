@@ -28,7 +28,13 @@
    
     <ul>
         {% for persona in listas %}
-        <li>{{persona}}</li>
+        <li>
+            {{persona}}
+            <a href={% url 'mostrar' persona.id %}>Mostrar</a>
+            <a href={% url 'editar' persona.id %}>Editar</a>
+            <a href={% url 'eliminar' persona.id %}>Eliminar</a>
+            
+        </li>
         {%endfor%}
 
     </ul>

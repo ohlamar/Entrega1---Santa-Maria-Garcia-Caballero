@@ -29,6 +29,7 @@
                         {%if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href='#'>{{request.user.username}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'listado' %}">Listado de Personajes</a></li>
                         {%else%} 
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Crear cuenta</a></li>
@@ -44,14 +45,17 @@
         {% endblock header %}
         <!-- About section-->
         {% block body %}
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Bienvenido a nuestra web </h2>
-                        <p class="lead"> Para empezar crea una cuenta, o inicia sesion en caso de estar registrado. </p>
+            <section>
+                <div class="container px-4">
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h2>Bienvenido a nuestra web </h2>
+                            <p class="lead"> Para empezar crea una cuenta, o inicia sesion en caso de estar registrado. </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            
         {% endblock body %}
         
         <!-- Services section-->

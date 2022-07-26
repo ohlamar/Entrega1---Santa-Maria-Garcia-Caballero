@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Personaje</title>
+{% endblock title %}
+
+{% block header %}
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Información del Personaje</h1>
+    </div>
+</header>
+{% endblock header %}
+
+
+    
+
+
+
+{% block body %}
+
+<button>
+    <a href={% url 'listado' %}>Volver</a>
+</button>
+
+<p>
+    <ul>
+        <li>
+            {{person.nombre}}
+        </li>
+        <li>
+            {{person.edad}}
+        </li>
+        <li>
+            {{person.fecha}}
+        </li>
+    </ul>
+</p>
+
+{% endblock body %}

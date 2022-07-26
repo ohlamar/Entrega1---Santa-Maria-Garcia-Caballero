@@ -40,3 +40,54 @@ def listado(request):
     form = Busqueda()    
     return render(request, 'creation/listado.html', {'listas': listas, 'form':form})
 
+# def editar(request, id):
+#     persona = Person.objects.get(id=id)
+    
+#     if request.method == 'POST':
+#         form = FormPerson(request.POST)
+#         if form.is_valid():
+#             persona.nombre = form.cleaned_data.get('nombre')
+#             persona.edad = form.cleaned_data.get('edad')
+#             persona.fecha = form.cleaned_data.get('fecha')
+#             persona.save()
+    
+#             return redirect('listado')
+        
+#         else:
+#             return render(request, 'edit.html', {'form': form})
+    
+#     form_person = FormPerson(initial={'nombre': persona.nombre, 'edad': persona.edad, 'fecha': persona.fecha})
+    
+#     return render(request, 'edit.html', {'form': form_person})
+    
+
+def edit(request, id):
+    person = Person.objects.get(id=id)
+    
+    if request.method == 'POST':
+        form = FormPerson(request.POST)
+        if form.is_valid():
+            person.nombre = form.cleaned_data.get('nombre')
+            person.edad = form.cleaned_data.get('edad')
+            person.fecha = form.cleaned_data.get('fecha')
+            person.save()
+            
+            return redirect('listado')
+
+        else:
+            return render(request, 'editar', {'form': form, 'person': person})
+        
+    form_person = FormPerson(initial={'nombre': person.nombre, 'edad': person.edad, 'fecha': person.fecha})
+    
+    return render(request, 'creation/editar.html', {'form': form_person, 'person': person})
+
+
+def eliminar(request, id):
+    persona = Person.objects.get(id=id)
+    persona.delete()
+    
+    return redirect('listado')
+
+def mostrar(request, id): 
+    person = Person.objects.get(id=id)
+    return render(request, 'creation/mostrar.html', {'person': person})
