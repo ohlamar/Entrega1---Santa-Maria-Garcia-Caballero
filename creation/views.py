@@ -17,7 +17,9 @@ def create(request):
                 
             person = Person(nombre=data.get('nombre'), 
                            edad=data.get('edad'),
-                           fecha=fecha)
+                           descripcion=data.get('descripcion'),
+                           fecha=data.get('fecha')
+                           )
             person.save()
             
             return redirect('listado')
@@ -50,17 +52,22 @@ def edit(request, id):
         if form.is_valid():
             person.nombre = form.cleaned_data.get('nombre')
             person.edad = form.cleaned_data.get('edad')
+            person.descripcion = form.cleaned_data.get('descripcion')
             person.fecha = form.cleaned_data.get('fecha')
             person.save()
             
             return redirect('listado')
 
         else:
-            return render(request, 'editar', {'form': form, 'person': person})
+            return render(request, 'edition', {'form': form, 'person': person})
         
-    form_person = FormPerson(initial={'nombre': person.nombre, 'edad': person.edad, 'fecha': person.fecha})
+    form_person = FormPerson(initial={'nombre': person.nombre, 
+                                      'edad': person.edad, 
+                                      'fecha': person.fecha,
+                                      'descripcion': person.descripcion
+                                      })
     
-    return render(request, 'creation/editar.html', {'form': form_person, 'person': person})
+    return render(request, 'creation/edition.html', {'form': form_person, 'person': person})
 
 
 def eliminar(request, id):

@@ -1,9 +1,11 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
-# Create your models here.
+
 class Person(models.Model):
     nombre = models.CharField(max_length=30)
     edad = models.IntegerField()
+    descripcion = RichTextField(null=True)
     fecha = models.DateField(null=True)
     
     def __str__(self):
