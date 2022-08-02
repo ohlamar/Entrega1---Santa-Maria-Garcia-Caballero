@@ -1,3 +1,4 @@
+from ast import List
 from django.urls import path
 from .views import create, list, edit, delete, show
 

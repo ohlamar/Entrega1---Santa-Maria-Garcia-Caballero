@@ -3,7 +3,7 @@ from datetime import datetime
 
 from creation.forms import FormPerson, Search
 from .models import Person
-from django.contrib.auth.decorators import login_required
+
 
 def create(request):
     if request.method == 'POST':
@@ -18,7 +18,8 @@ def create(request):
                 
             person = Person(name=data.get('name'), 
                            age=data.get('age'),
-                           date=date)
+                           date=date,
+                           description=data.get('description'))
             person.save()
             
             return redirect('list')
@@ -42,7 +43,7 @@ def list(request):
     form = Search()    
     return render(request, 'creation/list.html', {'lists': lists, 'form':form})
 
-@login_required
+
 def edit(request, id):
     person = Person.objects.get(id=id)
     
@@ -52,6 +53,7 @@ def edit(request, id):
             person.name = form.cleaned_data.get('name')
             person.age = form.cleaned_data.get('age')
             person.date = form.cleaned_data.get('date')
+            person.description = form.cleaned_data.get('description')
             person.save()
             
             return redirect('list')
@@ -59,18 +61,21 @@ def edit(request, id):
         else:
             return render(request, 'edit', {'form': form, 'person': person})
         
-    form_person = FormPerson(initial={'name': person.name, 'age': person.age, 'date': person.date})
+    form_person = FormPerson(initial={'name': person.name, 
+                                      'age': person.age, 
+                                      'date': person.date,
+                                      'description': person.description})
     
     return render(request, 'creation/edit.html', {'form': form_person, 'person': person})
 
-@login_required
+
 def delete(request, id):
     person = Person.objects.get(id=id)
     person.delete()
     
     return redirect('list')
 
-@login_required
+
 def show(request, id): 
     person = Person.objects.get(id=id)
     return render(request, 'creation/show.html', {'person': person})

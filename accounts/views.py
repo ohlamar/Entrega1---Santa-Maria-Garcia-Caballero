@@ -2,6 +2,8 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
+
+from accounts.models import Avatar
 from.forms import MyUserCreationForm, MyUserEditForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -53,9 +55,10 @@ def profile(request):
 def edit_profile(request):
     
     user = request.user
+    avatar, _ = Avatar.objects.get_or_create(user=user)
     
     if request.method == 'POST':
-        form = MyUserEditForm(request.POST)
+        form = MyUserEditForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data
             if data.get('first_name'):
@@ -64,9 +67,12 @@ def edit_profile(request):
                 user.last_name = data.get('last_name')
             if data.get('email'):
                 user.email = data.get('email')
-                
+            
+            avatar.image = data.get('avatar') if data.get('avatar') else avatar.image
+            
             if data.get('password1') and data.get('password1') == data.get('password2'):
                 user.set_password(data.get('password1'))
+            avatar.save()
             user.save()
             
             return redirect('profile')
@@ -78,7 +84,8 @@ def edit_profile(request):
         initial={
             'email': user.email,
             'first_name': user.first_name,
-            'last_name': user.last_name      
+            'last_name': user.last_name,
+            'avatar': avatar.image
         })
     
     return render(request, 'accounts/edit.html', {'form': form})
