@@ -29,7 +29,7 @@
                         {%if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">{{request.user.username}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'listado' %}">Listado de Personajes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'list' %}">Listado de Personajes</a></li>
                         {%else%} 
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Crear cuenta</a></li>

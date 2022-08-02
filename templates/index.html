@@ -5,10 +5,18 @@
 {% endblock title %}
 
 {% block header %}
+{%if request.user.is_authenticated %}
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder"> Bienvenido {{request.user.username}}, como va? </h1>
+    </div>
+</header>
+{%else%} 
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
         <h1 class="fw-bolder">Proyecto Final</h1>
     </div>
 </header>
+{%endif%}
 {% endblock header %}
 

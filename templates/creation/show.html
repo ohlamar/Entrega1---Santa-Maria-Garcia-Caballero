@@ -20,19 +20,19 @@
 {% block body %}
 
 <button>
-    <a href={% url 'listado' %}>Volver</a>
+    <a href={% url 'list' %}>Volver</a>
 </button>
 
 <p>
     <ul>
         <li>
-            {{person.nombre}}
+            {{person.name}}
         </li>
         <li>
-            {{person.edad}}
+            {{person.age}}
         </li>
         <li>
-            {{person.fecha}}
+            {{person.date}}
         </li>
     </ul>
 </p>

@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from datetime import datetime
 
-from creation.forms import Busqueda, FormPerson
+from creation.forms import FormPerson, Search
 from .models import Person
+from django.contrib.auth.decorators import login_required
 
 def create(request):
     if request.method == 'POST':
@@ -11,16 +12,16 @@ def create(request):
         if form.is_valid():
             data = form.cleaned_data
             
-            fecha = data.get('date')
-            if not fecha:
-                fecha = datetime.now()
+            date = data.get('date')
+            if not date:
+                date = datetime.now()
                 
-            person = Person(nombre=data.get('nombre'), 
-                           edad=data.get('edad'),
-                           fecha=fecha)
+            person = Person(name=data.get('name'), 
+                           age=data.get('age'),
+                           date=date)
             person.save()
             
-            return redirect('listado')
+            return redirect('list')
         
         else:
             return render(request, 'creation/creation.html', {'form': form})
@@ -30,46 +31,46 @@ def create(request):
     return render(request, 'creation/creation.html', {'form': form_per})
 
 
-def listado(request):
+def list(request):
     
-    nom_bus = request.GET.get('nombre')
-    if nom_bus:
-        listas = Person.objects.filter(nombre__icontains=nom_bus) 
+    search_name = request.GET.get('name')
+    if search_name:
+        lists = Person.objects.filter(name__icontains=search_name) 
     else:
-        listas = Person.objects.all()
+        lists = Person.objects.all()
     
-    form = Busqueda()    
-    return render(request, 'creation/listado.html', {'listas': listas, 'form':form})
+    form = Search()    
+    return render(request, 'creation/list.html', {'lists': lists, 'form':form})
 
-
+@login_required
 def edit(request, id):
     person = Person.objects.get(id=id)
     
     if request.method == 'POST':
         form = FormPerson(request.POST)
         if form.is_valid():
-            person.nombre = form.cleaned_data.get('nombre')
-            person.edad = form.cleaned_data.get('edad')
-            person.fecha = form.cleaned_data.get('fecha')
+            person.name = form.cleaned_data.get('name')
+            person.age = form.cleaned_data.get('age')
+            person.date = form.cleaned_data.get('date')
             person.save()
             
-            return redirect('listado')
+            return redirect('list')
 
         else:
-            return render(request, 'editar', {'form': form, 'person': person})
+            return render(request, 'edit', {'form': form, 'person': person})
         
-    form_person = FormPerson(initial={'nombre': person.nombre, 'edad': person.edad, 'fecha': person.fecha})
+    form_person = FormPerson(initial={'name': person.name, 'age': person.age, 'date': person.date})
     
-    return render(request, 'creation/editar.html', {'form': form_person, 'person': person})
+    return render(request, 'creation/edit.html', {'form': form_person, 'person': person})
 
-
-def eliminar(request, id):
-    persona = Person.objects.get(id=id)
-    persona.delete()
-    
-    return redirect('listado')
-
-
-def mostrar(request, id): 
+@login_required
+def delete(request, id):
     person = Person.objects.get(id=id)
-    return render(request, 'creation/mostrar.html', {'person': person})
+    person.delete()
+    
+    return redirect('list')
+
+@login_required
+def show(request, id): 
+    person = Person.objects.get(id=id)
+    return render(request, 'creation/show.html', {'person': person})

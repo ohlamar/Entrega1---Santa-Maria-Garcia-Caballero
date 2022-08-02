@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Listado</title>
+<title>list</title>
 {% endblock title %}
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bolder">Listado de personajes</h1>
+        <h1 class="fw-bolder">Lista de personajes</h1>
     </div>
 </header>
 {% endblock header %}
@@ -16,23 +16,23 @@
 
 
 <p>
-    <form action={% url 'listado' %} method='get'>
+    <form action={% url 'list' %} method='get'>
         {{form}}
         <button>Buscar</button>
     </form>
 </p>
 
 <p>
-    {% if listas %}
+    {% if lists %}
     
    
     <ul>
-        {% for persona in listas %}
+        {% for person in lists %}
         <li>
-            {{persona}}
-            <a href={% url 'mostrar' persona.id %}>Mostrar</a>
-            <a href={% url 'editar' persona.id %}>Editar</a>
-            <a href={% url 'eliminar' persona.id %}>Eliminar</a>
+            {{person}}
+            <a href={% url 'show' person.id %}>Mostrar</a>
+            <a href={% url 'edit' person.id %}>Editar</a>
+            <a href={% url 'delete' person.id %}>Eliminar</a>
             
         </li>
         {%endfor%}
@@ -41,6 +41,6 @@
     {%else%}
     No se encontraron datos.
     {% endif %}
+    
 </p>
-
 {% endblock body %}

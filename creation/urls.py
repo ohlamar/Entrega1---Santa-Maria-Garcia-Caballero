@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import create, listado, edit, eliminar, mostrar
+from .views import create, list, edit, delete, show
 
 urlpatterns = [
     path('create/', create, name='create'),
-    path('listado/', listado, name='listado'),
-    path('editar/<int:id>/', edit, name='editar'),
-    path('eliminar/<int:id>/', eliminar, name='eliminar'),
-    path('mostrar/<int:id>/', mostrar, name='mostrar'),
+    path('list/', list, name='list'),
+    path('edit/<int:id>/', edit, name='edit'),
+    path('delete/<int:id>/', delete, name='delete'),
+    path('show/<int:id>/', show, name='show'),
 ]
