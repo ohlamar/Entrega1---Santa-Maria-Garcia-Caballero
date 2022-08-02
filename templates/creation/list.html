@@ -29,17 +29,10 @@
     <ul>
         {% for person in lists %}
         <li>
-<<<<<<< HEAD:templates/creation/list.html
             {{person}}
             <a href={% url 'show' person.id %}>Mostrar</a>
             <a href={% url 'edit' person.id %}>Editar</a>
             <a href={% url 'delete' person.id %}>Eliminar</a>
-=======
-            {{persona}}
-            <a href={% url 'mostrar' persona.id %}>Mostrar</a>
-            <a href={% url 'edition' persona.id %}>Editar</a>
-            <a href={% url 'eliminar' persona.id %}>Eliminar</a>
->>>>>>> 84080a87746cc35ad4a147a52830f650716c3d50:templates/creation/listado.html
             
         </li>
         {%endfor%}

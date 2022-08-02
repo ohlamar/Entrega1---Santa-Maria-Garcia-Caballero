@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'home',
     'creation',
     'accounts',
-    'ckeditor'
+    'ckeditor',
+    'cbv'
 ]
 
 MIDDLEWARE = [

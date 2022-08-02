@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista de agentes</title>
+{% endblock title %}
+
+{% block header %}
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Lista de agentes</h1>
+    </div>
+</header>
+{% endblock header %}
+
+{% block body %}
+
+<p>
+    {% if object_list %}
+    
+   
+    <ul>
+        {% for agent in object_list %}
+        <li>
+            {{agent}}
+            <a href={% url 'view_agent' agent.pk %}>Mostrar</a>
+            <a href={% url 'modify' agent.pk %}>Editar</a>
+            <a href={% url 'delete_agent' agent.pk %}>Eliminar</a>
+            
+        </li>
+        {%endfor%}
+
+    </ul>
+    {%else%}
+    No se encontraron datos.
+    {% endif %}
+    
+</p>
+{% endblock body %}

@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Personaje</title>
+<title>Agente</title>
 {% endblock title %}
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bolder">Información del Personaje</h1>
+        <h1 class="fw-bolder">Información del Agente</h1>
     </div>
 </header>
 {% endblock header %}
@@ -20,22 +20,19 @@
 {% block body %}
 
 <button>
-    <a href={% url 'list' %}>Volver</a>
+    <a href={% url 'list_agent' %}>Volver</a>
 </button>
 
 <p>
     <ul>
         <li>
-            {{person.name}}
+            {{agent.nickname}}
         </li>
         <li>
-            {{person.age}}
+            {{agent.age}}
         </li>
         <li>
-            {{person.description | safe}}
-        </li>
-        <li>
-            {{person.date}}
+            {{agent.date}}
         </li>
     </ul>
 </p>

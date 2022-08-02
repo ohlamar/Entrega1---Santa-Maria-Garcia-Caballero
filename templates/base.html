@@ -32,6 +32,8 @@
                         
                         <li class="nav-item"><a class="nav-link" href="{% url 'create' %}">Crear personaje</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'list' %}">Listado de Personajes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'create_agent' %}">Crear Agente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'list_agent' %}">Listado de Agentes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">
                             {% if request.user.avatar.image %}
                             <img src={{request.user.avatar.image.url}} alt="" height='28px'>

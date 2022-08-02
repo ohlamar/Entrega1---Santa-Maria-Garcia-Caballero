@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Editar persona</title>
+<title>Modificar agente</title>
 {% endblock title %}
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bolder">Editar personaje</h1>
+        <h1 class="fw-bolder">Modificar agente</h1>
     </div>
 </header>
 {% endblock header %}
@@ -15,11 +15,10 @@
 {% block body %}
 
 <p>
-<<<<<<<< HEAD:templates/creation/edit.html
-    <form action={% url 'edit' person.id %} method="post">
-========
-    <form action={% url 'edition' person.id %} method="post">
->>>>>>>> 84080a87746cc35ad4a147a52830f650716c3d50:templates/creation/edition.html
+
+    <form action={% url 'modify' agent.pk %} method="post">
+
+
         {% csrf_token %}
 
         <table>
@@ -31,5 +30,5 @@
         
     </form>
 </p>
-<a href="{% url 'list' %}">Volver</a>
+<a href="{% url 'list_agent' %}">Volver</a>
 {% endblock body %}
