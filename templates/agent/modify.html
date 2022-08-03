@@ -16,7 +16,7 @@
 
 <p>
 
-    <form action={% url 'modify' agent.pk %} method="post">
+    <form action={% url 'modify' agent.id %} method="post">
 
 
         {% csrf_token %}

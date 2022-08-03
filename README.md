@@ -25,3 +25,10 @@ Registro y modificacion del perfil; formularios parecidos al de /creation. En el
 - Carpeta de template separados segun su funcion.
 
 - Seccion About, donde se describe que aporto cada participante al proyecto.
+
+Aportes
+
+Agustín Caballero
+Templates, app /monsters, imagen de perfil o avatar, organizacion del proyecto en general, prueba y correccion final.
+Agustín Santa María
+Base del proyecto, app /creation, app /accounts, app /agent, verificacion y correccion de idioma.
