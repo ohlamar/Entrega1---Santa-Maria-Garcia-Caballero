@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
 from datetime import datetime
-
 from creation.forms import FormPerson, Search
 from .models import Person
 

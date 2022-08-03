@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'creation',
     'accounts',
     'ckeditor',
-    'cbv'
+    'cbv',
+    'monsters',
 ]
 
 MIDDLEWARE = [

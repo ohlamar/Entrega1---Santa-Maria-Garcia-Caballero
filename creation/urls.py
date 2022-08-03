@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import create, list, edit, delete, show
 
+
 urlpatterns = [
     path('create/', create, name='create'),
     path('list/', list, name='list'),

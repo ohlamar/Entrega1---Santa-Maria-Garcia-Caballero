@@ -2,14 +2,14 @@
 
 
 {% block title %}
-<title>Agente</title>
+<title>Monstruo</title>
 {% endblock title %}
 
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bolder">Información del Agente</h1>
+        <h1 class="fw-bolder">Información del Monstruo</h1>
     </div>
 </header>
 {% endblock header %}
@@ -17,19 +17,18 @@
 
 {% block body %}
 <button>
-    <a href={% url 'list_agent' %}>Volver</a>
+    <a href={% url 'list_monster' %}>Volver</a>
 </button>
-
 <p>
     <ul>
         <li>
-            {{agent.nickname}}
+            {{monster.nickname}}
         </li>
         <li>
-            {{agent.age}}
+            {{monster.age}}
         </li>
         <li>
-            {{agent.date}}
+            {{monster.date}}
         </li>
     </ul>
 </p>

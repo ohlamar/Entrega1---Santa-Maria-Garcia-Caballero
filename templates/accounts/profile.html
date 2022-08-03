@@ -21,7 +21,7 @@
         <li>Apellido: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
         <li>
-            <p>image de perfil:</p>
+            <p>Imagen de perfil:</p>
             {% if request.user.avatar.image %}
             <img src={{request.user.avatar.image.url}} alt="" height='100px'>
             {% endif %}

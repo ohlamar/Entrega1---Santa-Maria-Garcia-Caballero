@@ -2,14 +2,14 @@
 
 
 {% block title %}
-<title>Crear agente</title>
+<title>Modificar monstruo</title>
 {% endblock title %}
 
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bolder">Crea un agente</h1>
+        <h1 class="fw-bolder">Modificar monstruo</h1>
     </div>
 </header>
 {% endblock header %}
@@ -17,16 +17,14 @@
 
 {% block body %}
 <p>
-    <form action={% url 'create_agent' %} method="post">
+    <form action={% url 'edit_monster' monster.pk %} method="post">
         {% csrf_token %}
-
         <table>
             {{form.media}}
             {{form.as_table}}
         </table>
-
-        <button>Crear</button>
-        
+        <button>Editar</button>
     </form>
 </p>
+<a href="{% url 'list_monster' %}">Volver</a>
 {% endblock body %}

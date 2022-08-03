@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
 <title>Eliminar</title>
 {% endblock title %}
+
 
 {% block header %}
 <header class="bg-primary bg-gradient text-white">
@@ -14,12 +16,10 @@
 
 
 {% block body %}
-
 <p>
-    <form action={% url 'delete_agent' object.id %} method="post">
+    <form action={% url 'delete_monster' object.id %} method="post">
         {% csrf_token %}
         ¿Desea eliminar?
         <button>Confirmar</button>
 </p>
-
 {% endblock body %}

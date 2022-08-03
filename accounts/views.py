@@ -2,11 +2,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
-
 from accounts.models import Avatar
 from.forms import MyUserCreationForm, MyUserEditForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
 
 def login(request):
     
@@ -32,7 +31,6 @@ def login(request):
     return render(request, 'accounts/login.html', {'form': form})
 
 
-
 def register(request):
     
     if request.method == 'POST':
@@ -50,6 +48,7 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
 
 @login_required
 def edit_profile(request):
