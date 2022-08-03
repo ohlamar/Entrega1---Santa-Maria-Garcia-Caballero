@@ -32,3 +32,5 @@ Agustín Caballero
 Templates, app /monsters, imagen de perfil o avatar, organizacion del proyecto en general, prueba y correccion final.
 Agustín Santa María
 Base del proyecto, app /creation, app /accounts, app /agent, verificacion y correccion de idioma.
+
+Breve reseña del proyecto https://youtu.be/6FBR3zJJEkE
